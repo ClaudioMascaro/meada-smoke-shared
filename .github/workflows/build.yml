@@ -1,0 +1,21 @@
+# A reusable pipeline, `on` as a map. Its CI job holds a block of its own.
+name: build
+on:
+  workflow_call:
+    inputs:
+      target:
+        type: string
+        default: none
+    secrets:
+      token:
+        required: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # case: local-in-reusable
+      - uses: ./local-action
+      - run: echo "build ${{ inputs.target }} for ${{ github.repository }}, file ${{ github.workflow_ref }}"

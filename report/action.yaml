@@ -1,0 +1,7 @@
+name: report action of shared
+description: report action of shared
+runs:
+  using: composite
+  steps:
+    - run: echo "report action of shared"
+      shell: bash

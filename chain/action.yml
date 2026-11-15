@@ -1,0 +1,9 @@
+name: chain
+description: A composite action that calls another action by its full name
+runs:
+  using: composite
+  steps:
+    # case: action-in-action
+    - uses: ClaudioMascaro/meada-smoke-shared/setup@main
+    - run: echo "chain action of shared"
+      shell: bash

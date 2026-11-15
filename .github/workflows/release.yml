@@ -1,0 +1,10 @@
+# A reusable pipeline, `on` as a list. Its CI job asks to write.
+name: release
+on: [workflow_call]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - run: echo "release for ${{ github.repository }}"

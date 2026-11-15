@@ -1,0 +1,8 @@
+# case: orphan
+name: orphan
+on: workflow_call
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "nobody calls this"

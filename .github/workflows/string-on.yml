@@ -1,0 +1,7 @@
+name: string-on
+on: workflow_call
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "on as a string"

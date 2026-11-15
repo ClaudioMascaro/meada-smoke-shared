@@ -1,0 +1,11 @@
+# An intermediate reusable pipeline: it calls another one of its own repository.
+name: wrapper
+on:
+  workflow_call:
+  workflow_dispatch:
+jobs:
+  inner:
+    # case: local-pipeline-in-reusable
+    uses: ./.github/workflows/build.yml
+    with:
+      target: wrapped
