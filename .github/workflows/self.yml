@@ -1,0 +1,26 @@
+# The repository of reusable pipelines calls its own.
+name: self
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local:
+    # case: self-local
+    uses: ./.github/workflows/build.yml
+  by-name:
+    # case: self-full-name
+    uses: ClaudioMascaro/meada-smoke-shared/.github/workflows/build.yml@main
+  by-old-commit:
+    # case: self-old-commit
+    uses: ClaudioMascaro/meada-smoke-shared/.github/workflows/build.yml@629f0c49d8aaa54cdb1f71ca8e872b8dda14b1a8
+  steps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # case: self-local-action
+      - uses: ./setup
+      # case: self-local-root
+      - uses: ./
