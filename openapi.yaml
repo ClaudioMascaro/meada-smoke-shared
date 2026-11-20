@@ -1,0 +1,11 @@
+openapi: 3.0.3
+info:
+  title: Smoke Shared Orders API
+  version: 1.0.0
+paths:
+  /orders:
+    post:
+      operationId: createSharedOrder
+      responses:
+        '201':
+          description: Order accepted
